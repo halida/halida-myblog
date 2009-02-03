@@ -6,6 +6,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
                        (r'^myblog/',include('testproject.myblog.urls')),
+                       (r'^accounts/',include('testproject.accounts.urls')),
     # Example:
     # (r'^testproject/', include('testproject.foo.urls')),
 
