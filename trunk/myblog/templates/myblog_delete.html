@@ -1,0 +1,22 @@
+{% extends "myblog_base.html" %}
+
+{% block content %}
+<div class="post">
+  <h1 class="title">
+    是否确认要删除:{{blog_name}}
+    {% if article_id %}
+    中的:{{article_id}}
+    {% endif %}
+    ?</h1>
+
+  <div class="operation" align="right">
+    <form action="/myblog/manage/{{blog_name}}/{% if article_id %}{{article_id}}/{% endif %}delete/confirmed/" method="POST">
+      <input type="submit" value="是">
+    </form><br>
+    <form action="/myblog/manage/" method="GET">
+      <input type="submit" value="否">
+    </form>
+  </div>
+</div>
+{% endblock %}
+    

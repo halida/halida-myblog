@@ -1,0 +1,50 @@
+{% extends "myblog_base.html" %}
+
+{% block title %}
+{{ username }}
+{% endblock %}
+
+{% block content %}
+
+{# new/update blog #}
+<div class="post">
+  <h1 class="title">新增/修改博客</h1>
+  <div class="entry">
+    <form action="." method="POST">
+      <table>
+        {{ form.as_table }}
+      </table>
+      <p><input type="submit" value="确认"></p>
+    </form>
+  </div>
+</div>
+
+
+{# show blog #}
+{% for blog in blogs %}
+<div class="post">
+  <h1 class="title">
+    <a href="/myblog/{{blog.name}}/">{{ blog.name }}</a>
+  </h1>
+  <div class="entry">
+    {{blog.desc}}
+  </div>
+
+  <div class="operation" align="right">
+    <form action="/myblog/{{blog.name}}/manage/" method="GET">
+      <input type="submit" value="管理">
+    </form><br>
+    <form action="/myblog/{{blog.name}}/update/" method="GET">
+      <input type="submit" value="修改">
+    </form><br>
+    <form action="/myblog/{{blog.name}}/delete/notconfirmed/" method="POST">
+      <input type="submit" value="删除">
+    </form>
+
+  </div>
+
+</div>
+{% endfor %}
+
+{% endblock %}
+
