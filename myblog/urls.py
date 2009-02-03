@@ -2,13 +2,13 @@
 #-*-coding:utf-8-*-
 # ---------------------------------
 # create-time:      <2009/01/23 13:29:20>
-# last-update-time: <halida 02/03/2009 20:09:32>
+# last-update-time: <halida 02/03/2009 20:36:18>
 # ---------------------------------
 # 
 
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('testproject.myblog.views',
+urlpatterns = patterns('myblog.views',
                        (r'^$', 'mainpage'),
                        #管理博客
                        (r'^manage/$','manage_blog'),
