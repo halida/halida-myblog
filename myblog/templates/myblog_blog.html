@@ -1,0 +1,25 @@
+{% extends "myblog_base.html" %}
+
+{% block title %}
+{{ blog_name }}
+{% endblock %}
+
+{% block content %}
+
+{% for article in articles %}
+<div class="post">
+  <h1 class="title">{{ article.title }}</h1>
+  <div class="entry">
+    {{ article.text }}
+  </div>
+</div>
+
+<div class="meta">
+  <p class="time">{{ article.create_time|date }}
+    {{ article.create_time|time }}
+  </p>
+</div>
+{% endfor %}
+
+{% endblock %}
+

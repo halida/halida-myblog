@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>myblog</title>
+    <link rel="stylesheet" type="text/css" href="/statics/styles/freeradicals/style.css" media="screen" />
+    {% block head_addon %}{% endblock%}
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <div id="header">
+	<div id="logo">
+	  <h1><a href="#">
+	      {% block title %}
+	      我的博客
+	      {% endblock %}
+	  </a></h1>
+	</div>
+	<!-- end #logo -->
+
+	<div id="menu">
+	  <ul>
+	    <li class="active"><a href="/myblog/">主页</a></li>
+	    {# user login #}
+            {% if not islogin %}            
+            <li><a href="/accounts/login?next={{next}}">登陆</a></li>
+            <li><a href="/accounts/register?next={{next}}">注册</a></li>
+            {% else %} 
+            <li><a href="/accounts/">{{username}}</a></li>
+            <li><a href="/myblog/manage">博客管理</a></li>
+            <li><a href="/accounts/logout?next={{next}}">登出</a></li>
+            {% endif %}
+
+	  </ul>
+	</div>
+	<!-- end #menu -->
+      </div>
+      <!-- end #header -->
+
+      <div id="page">
+	<div id="content">
+	  {% block content %}
+	  {% endblock %}
+
+	</div>
+	<!-- end #content -->
+
+	<div id="sidebar">
+	  <div id="sidebar-bgtop"></div>
+	  <div id="sidebar-content">
+	    <div id="sidebar-bgbtm">
+	      <ul>
+		<li id="search">
+		  <h2>查询</h2>
+		  <ul>
+		  </ul>
+		</li>
+	      </ul>
+	    </div>
+	  </div>	  
+	</div>
+	<!-- end #sidebar -->
+
+	<div style="clear:both; margin:0;"></div>
+      </div>
+      <!-- end #page -->
+
+    </div>
+
+    <div id="footer">
+      <p>&copy; 2008. All Rights Reserved. Design by halida.</p>
+    </div>
+    <!-- end #footer -->
+  </body>
+</html>

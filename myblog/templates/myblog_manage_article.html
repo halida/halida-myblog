@@ -1,0 +1,51 @@
+{% extends "myblog_base.html" %}
+
+{% block head_addon %}
+<!-- {{ form.media }} -->
+{% endblock%}
+
+{% block title %}
+{{ blog_name }}
+{% endblock %}
+
+{% block content %}
+
+{# new/update article #}
+<div class="post">
+  <h1 class="title">新增/修改文章</h1>
+  <div class="entry">
+    <form action="." method="POST">
+      <table>
+        {{ form.as_table }}
+      </table>
+      <p><input type="submit" value="确认"></p>
+    </form>
+  </div>
+</div>
+
+
+{# show article #}
+{% for article in articles %}
+<div class="post">
+  <h1 class="title">
+    <a href="/myblog/{{blog_name}}/{{article.pk}}/">{{ article.title }}</a>
+  </h1>
+  <div class="entry">
+    <!-- {{article.text}} -->
+  </div>
+
+  <div class="operation" align="right">
+    <form action="/myblog/{{blog_name}}/{{article.pk}}/update/" method="GET">
+      <input type="submit" value="修改">
+    </form><br>
+    <form action="/myblog/{{blog_name}}/{{article.pk}}/delete/notconfirmed/" method="POST">
+      <input type="submit" value="删除">
+    </form>
+
+  </div>
+
+</div>
+{% endfor %}
+
+{% endblock %}
+
